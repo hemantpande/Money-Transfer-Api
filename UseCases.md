@@ -2,10 +2,10 @@ We'll be using 2 personas, John and Will.
 
 #### Use cases
 ###### 1. Transfer money between accounts
-a. John has an account  \n
-b. Will has an account and   \n
-c. John wants to transfer 100 pounds in Will's account   \n
-d. System debits 100 pounds from John's account and credits 100 pounds into Will's account.  \n
+a. John has an account  
+b. Will has an account and  
+c. John wants to transfer 100 pounds in Will's account  
+d. System debits 100 pounds from John's account and credits 100 pounds into Will's account.  
 
 ###### 2. John's account has an insufficient balance
 a. John wants to transfer 100 pounds to Will. \n
