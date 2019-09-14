@@ -10,3 +10,17 @@ Nouns (Models) - _Money, Account_
 Verbs (Behavior) - _transfer_
 
 Let's see, if we can come up with some use cases for our problem. We'll maintain it in separate file called "UseCases.md".
+
+### Session 2
+
+We do TDD. Let's start with tests first. Before that, we need to give some thought to our project structure.
+
+Let's start with what we know right now. We have a domain and on scaffolding side, we'll need some repositories for data interactions. 
+
+Ok, add 2 modules, one for "Infrastructure" and other for our domain, let's call it "Core" as per DDD convention.  
+.  
+.  
+.  
+Ok, so we have our basic project structure in place. Let's think a bit from SRP perspective, we need a class which will be responsible for managing the transactions. Need to keep a check in amount of code going into this class, down the line, just a thought to keep in back of the mind. For now, it looks a good start. We'll start with our first test for UseCase 1.
+
+
