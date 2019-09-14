@@ -16,8 +16,10 @@ public class AccountServiceShould {
     private AccountService accountService;
     private Account jackAccount;
     private Account steveAccount;
+    private Account hemantAccount;
     private final Long jackAccountId = 1L;
     private final Long steveAccountId = 2L;
+    private final Long hemantAccountId = 3L;
 
     @Before
     public void setup(){
@@ -30,6 +32,10 @@ public class AccountServiceShould {
                 .andInitialBalance(500)
                 .build();
         accountService.create(jackAccount);
+    }
+
+    @Test
+    public void transferMoneyBetweenTwoAccountsWithSameCurrency(){
 
         steveAccount = new AccountBuilder()
                 .newAccountWithId(steveAccountId)
@@ -38,10 +44,7 @@ public class AccountServiceShould {
                 .andInitialBalance(0)
                 .build();
         accountService.create(steveAccount);
-    }
 
-    @Test
-    public void transferMoneyBetweenTwoAccounts(){
         TransferRequest request = new TransferRequestBuilder()
                 .transfer(100D)
                 .from(jackAccountId)
@@ -55,6 +58,32 @@ public class AccountServiceShould {
 
         Assert.assertEquals(400D, jackCurrentBalance,0);
         Assert.assertEquals(100L, steveCurrentBalance,0);
+    }
+
+    @Test
+    public void transferMoneyBetweenTwoAccountsWithDifferentCurrency(){
+
+        hemantAccount = new AccountBuilder()
+                .newAccountWithId(hemantAccountId)
+                .withName("Steve")
+                .withBaseCurrency(Currencies.INR)
+                .andInitialBalance(0)
+                .build();
+        accountService.create(hemantAccount);
+
+        TransferRequest request = new TransferRequestBuilder()
+                .transfer(100D)
+                .from(jackAccountId)
+                .to(hemantAccountId)
+                .build();
+
+        accountService.transfer(request);
+
+        double jackCurrentBalance = accountService.getById(jackAccountId).getBalance();
+        double hemantCurrentBalance = accountService.getById(hemantAccountId).getBalance();
+
+        Assert.assertEquals(400D, jackCurrentBalance,0);
+        Assert.assertEquals(7103L, hemantCurrentBalance,0);
     }
 
     @After
