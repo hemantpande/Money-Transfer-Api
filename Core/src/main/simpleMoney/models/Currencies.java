@@ -1,4 +1,4 @@
-package simpleMoney.Models;
+package simpleMoney.models;
 
 public enum Currencies {
     USD,

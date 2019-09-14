@@ -1,19 +1,14 @@
-package simpleMoney.domain.builders;
+package simpleMoney.services.builders;
 
-import simpleMoney.Models.Account;
-import simpleMoney.Models.Currencies;
+import simpleMoney.models.Account;
+import simpleMoney.models.Currencies;
 
 public class AccountBuilder {
 
     private Account account;
 
-    public AccountBuilder getNewAccount() {
-        this.account = new Account();
-        return this;
-    }
-
-    public AccountBuilder withId(int accountNumber) {
-        account.setAccountNumber(accountNumber);
+    public AccountBuilder newAccountWithId(Long accountNumber) {
+        this.account = new Account(accountNumber);
         return this;
     }
 
