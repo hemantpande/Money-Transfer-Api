@@ -22,7 +22,7 @@
         <lombok.version>1.18.4</lombok.version>
         <slf4j.version>1.7.25</slf4j.version>
         <junit.version>4.11</junit.version>
-        <jackson-core.version>2.9.5</jackson-core.version>
+        <jackson-core.version>[2.9.9.2,)</jackson-core.version>
         <jersey-client.version>2.25.1</jersey-client.version>
         <assertj-core.version>3.11.1</assertj-core.version>
         <awaitility.version>3.0.0</awaitility.version>
