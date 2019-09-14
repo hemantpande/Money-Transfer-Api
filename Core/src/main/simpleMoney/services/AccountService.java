@@ -17,7 +17,15 @@ public class AccountService {
     }
 
     public void create(Account account) {
-        //_accountRepository.create(account);
+        _accountRepository.create(account.getAccountNumber(), account);
+    }
+
+    public Account getById(Long id){
+        return _accountRepository.getById(id);
+    }
+
+    // TODO : we need to return a proper transfer status
+    public void transfer(Long fromId, Long toId, Double amount){
 
     }
 }

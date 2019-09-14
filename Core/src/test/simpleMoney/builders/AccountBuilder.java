@@ -1,4 +1,4 @@
-package simpleMoney.services.builders;
+package simpleMoney.builders;
 
 import simpleMoney.models.Account;
 import simpleMoney.models.Currencies;

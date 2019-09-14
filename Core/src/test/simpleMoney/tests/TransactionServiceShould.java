@@ -1,10 +1,10 @@
-package simpleMoney.services.tests;
+package simpleMoney.tests;
 
 
 import org.junit.Test;
 import simpleMoney.services.AccountService;
 import simpleMoney.services.TransactionService;
-import simpleMoney.services.builders.AccountBuilder;
+import simpleMoney.builders.AccountBuilder;
 
 import simpleMoney.models.Currencies;
 
