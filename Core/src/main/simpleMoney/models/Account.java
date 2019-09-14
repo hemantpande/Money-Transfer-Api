@@ -13,13 +13,26 @@ public class Account {
     @Getter @Setter
     private String holderName;
 
-    @Getter @Setter
-    private double initialBalance;
+    @Setter
+    private Money balance;
 
-    @Getter @Setter
-    private Currencies baseCurrency;
+    public Currencies getBaseCurrency(){
+        return balance.getBaseCurrency();
+    }
+
+    public double getBalance(){
+        return balance.getBalance();
+    }
 
     public Account(Long accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public void debit(double amount) {
+        balance.debit(amount);
+    }
+
+    public void credit(double amount, Currencies sourceCurrencyForConversion) {
+        balance.credit(amount, sourceCurrencyForConversion);
     }
 }

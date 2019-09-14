@@ -2,6 +2,8 @@ package simpleMoney.services;
 
 import simpleMoney.library.Repository;
 import simpleMoney.models.Account;
+import simpleMoney.models.Currencies;
+import simpleMoney.models.TransferRequest;
 import simpleMoney.repositories.InMemoryRepository;
 
 public class AccountService {
@@ -25,7 +27,16 @@ public class AccountService {
     }
 
     // TODO : we need to return a proper transfer status
-    public void transfer(Long fromId, Long toId, Double amount){
+    public void transfer(TransferRequest request) {
 
+        Account fromAccount = _accountRepository.getById(request.getFromId());
+        Account toAccount = _accountRepository.getById(request.getToId());
+
+        fromAccount.debit(request.getAmount());
+        Currencies sourceCurrencyForConversion = fromAccount.getBaseCurrency();
+        toAccount.credit(request.getAmount(), sourceCurrencyForConversion);
+
+        _accountRepository.update(request.getFromId(), fromAccount);
+        _accountRepository.update(request.getToId(), toAccount);
     }
 }
