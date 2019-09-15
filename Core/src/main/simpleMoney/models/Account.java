@@ -38,7 +38,7 @@ public class Account {
 
         final double currentBalance = getBalance();
         final double rate = balance.getExchangeRate(sourceCurrencyForConversion);
-        final double creditedBalance = rate * currentBalance;
+        final double creditedBalance = currentBalance + rate * amount;
 
         balance.update(creditedBalance);
     }

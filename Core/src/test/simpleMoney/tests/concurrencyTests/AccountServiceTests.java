@@ -4,6 +4,7 @@ import org.junit.Test;
 import simpleMoney.builders.AccountBuilder;
 import simpleMoney.builders.TransferRequestBuilder;
 import simpleMoney.library.ResponseCode;
+import simpleMoney.library.TransferTask;
 import simpleMoney.models.Account;
 import simpleMoney.models.Currencies;
 import simpleMoney.models.TransferRequest;
@@ -11,6 +12,10 @@ import simpleMoney.services.AccountService;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class AccountServiceTests {
 
@@ -43,7 +48,35 @@ public class AccountServiceTests {
 
     @Test
     public void MeasureTimeTakenWhenTransactionsAreExecutedParallelly() {
+        final ExecutorService executor = Executors.newFixedThreadPool(10);
+        final LocalDateTime startTime = LocalDateTime.now();
+        try{
+            for (int current = 0; current < maxNumberOfTransactions; current++) {
 
+                final int firstAccountId = current;
+                createAccountWith(firstAccountId);
+
+                final int secondAccountId = maxNumberOfTransactions + current;
+                createAccountWith(secondAccountId);
+
+                TransferRequest request = getTransferRequestFor(firstAccountId, secondAccountId);
+                final TransferTask transferTask = new TransferTask(request, accountService::transfer);
+                Future<ResponseCode> response = executor.submit(transferTask);
+                System.out.println("Attempting to transfer $50 dollars from account " + firstAccountId
+                        + " to " + secondAccountId);
+
+                System.out.println("Response-" + response.get());
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }finally {
+            executor.shutdown();
+        }
+
+        System.out.println("Processed " + maxNumberOfTransactions + " transactions completed in "
+                + Duration.between(LocalDateTime.now(), startTime));
     }
 
     private TransferRequest getTransferRequestFor(int firstAccountId, int secondAccountId) {

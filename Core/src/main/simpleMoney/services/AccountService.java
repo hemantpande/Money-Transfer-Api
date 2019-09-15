@@ -7,6 +7,8 @@ import simpleMoney.models.Currencies;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.repositories.InMemoryRepository;
 
+import java.util.concurrent.*;
+
 public class AccountService {
 
     private final Repository<Account> _accountRepository;
@@ -27,7 +29,6 @@ public class AccountService {
         return _accountRepository.getById(id);
     }
 
-    // TODO : we need to return a proper transfer status
     public ResponseCode transfer(TransferRequest request) {
 
         try{
@@ -40,6 +41,9 @@ public class AccountService {
 
             _accountRepository.update(request.getFromId(), fromAccount);
             _accountRepository.update(request.getToId(), toAccount);
+
+            // TODO : Remove
+            System.out.println("Current thread: " + Thread.currentThread().getName());
 
             return ResponseCode.SUCCESS;
         }catch(Exception exception){
