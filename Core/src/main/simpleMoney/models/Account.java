@@ -29,10 +29,17 @@ public class Account {
     }
 
     public void debit(double amount) {
-        balance.debit(amount);
+        final double currentBalance = getBalance();
+        final double debitedBalance = currentBalance - amount;
+        balance.update(debitedBalance);
     }
 
     public void credit(double amount, Currencies sourceCurrencyForConversion) {
-        balance.credit(amount, sourceCurrencyForConversion);
+
+        final double currentBalance = getBalance();
+        final double rate = balance.getExchangeRate(sourceCurrencyForConversion);
+        final double creditedBalance = rate * currentBalance;
+
+        balance.update(creditedBalance);
     }
 }
