@@ -14,11 +14,14 @@ import simpleMoney.models.Currencies;
 public class AccountServiceShould {
 
     private AccountService accountService;
+
     private Account jackAccount;
-    private Account steveAccount;
-    private Account hemantAccount;
     private final Long jackAccountId = 1L;
+
+    private Account steveAccount;
     private final Long steveAccountId = 2L;
+
+    private Account hemantAccount;
     private final Long hemantAccountId = 3L;
 
     @Before
