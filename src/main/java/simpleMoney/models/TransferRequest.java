@@ -1,4 +1,4 @@
-package simpleMoney.models;
+package java.simpleMoney.models;
 
 import lombok.Data;
 import lombok.Getter;

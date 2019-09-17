@@ -1,13 +1,11 @@
-package simpleMoney.services;
+package java.simpleMoney.services;
 
-import simpleMoney.library.Repository;
-import simpleMoney.library.ResponseCode;
-import simpleMoney.models.Account;
-import simpleMoney.models.Currencies;
-import simpleMoney.models.TransferRequest;
-import simpleMoney.repositories.InMemoryRepository;
-
-import java.util.concurrent.*;
+import java.simpleMoney.library.Repository;
+import java.simpleMoney.library.ResponseCode;
+import java.simpleMoney.models.Account;
+import java.simpleMoney.models.Currencies;
+import java.simpleMoney.models.TransferRequest;
+import java.simpleMoney.repositories.InMemoryRepository;
 
 public class AccountService {
 

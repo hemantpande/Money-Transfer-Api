@@ -1,11 +1,8 @@
-package simpleMoney.models;
+package java.simpleMoney.models;
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 @Data
 public class Money {

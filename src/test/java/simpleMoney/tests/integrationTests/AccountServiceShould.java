@@ -1,15 +1,15 @@
-package simpleMoney.tests.integrationTests;
+package java.simpleMoney.tests.integrationTests;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import simpleMoney.builders.TransferRequestBuilder;
-import simpleMoney.models.Account;
-import simpleMoney.models.TransferRequest;
-import simpleMoney.services.AccountService;
-import simpleMoney.builders.AccountBuilder;
-import simpleMoney.models.Currencies;
+import java.simpleMoney.builders.TransferRequestBuilder;
+import java.simpleMoney.models.Account;
+import java.simpleMoney.models.TransferRequest;
+import java.simpleMoney.services.AccountService;
+import java.simpleMoney.builders.AccountBuilder;
+import java.simpleMoney.models.Currencies;
 
 public class AccountServiceShould {
 

@@ -1,4 +1,4 @@
-package simpleMoney.models;
+package java.simpleMoney.models;
 
 public enum ExchangeRates {
 

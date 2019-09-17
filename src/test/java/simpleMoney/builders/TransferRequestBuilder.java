@@ -1,6 +1,6 @@
-package simpleMoney.builders;
+package java.simpleMoney.builders;
 
-import simpleMoney.models.TransferRequest;
+import java.simpleMoney.models.TransferRequest;
 
 public class TransferRequestBuilder {
 

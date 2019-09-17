@@ -1,4 +1,4 @@
-package simpleMoney.library;
+package java.simpleMoney.library;
 
 public interface Repository<T> {
 

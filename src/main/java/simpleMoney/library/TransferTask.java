@@ -1,6 +1,6 @@
-package simpleMoney.library;
+package java.simpleMoney.library;
 
-import simpleMoney.models.TransferRequest;
+import java.simpleMoney.models.TransferRequest;
 
 import java.util.concurrent.Callable;
 import java.util.function.Function;

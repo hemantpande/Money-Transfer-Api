@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66826e08-774c-436a-8c62-cbb2b4ebe94b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +41,21 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration name="AccountServiceShould" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="money-transfer-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="java.simpleMoney.tests.integrationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="java.simpleMoney.tests.integrationTests" />
+      <option name="MAIN_CLASS_NAME" value="java.simpleMoney.tests.integrationTests.AccountServiceShould" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <module name="Money-Transfer-Api" />
       <option name="VM_PARAMETERS" />
@@ -88,6 +103,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AccountServiceShould" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -101,6 +121,7 @@
       <updated>1568717251481</updated>
       <workItem from="1568717252862" duration="244000" />
       <workItem from="1568718270889" duration="43000" />
+      <workItem from="1568718564684" duration="348000" />
     </task>
     <servers />
   </component>
