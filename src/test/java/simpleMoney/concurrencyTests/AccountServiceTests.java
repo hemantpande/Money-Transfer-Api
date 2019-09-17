@@ -1,14 +1,14 @@
-package java.simpleMoney.tests.concurrencyTests;
+package simpleMoney.concurrencyTests;
 
 import org.junit.Test;
-import java.simpleMoney.builders.AccountBuilder;
-import java.simpleMoney.builders.TransferRequestBuilder;
-import java.simpleMoney.library.ResponseCode;
-import java.simpleMoney.library.TransferTask;
-import java.simpleMoney.models.Account;
-import java.simpleMoney.models.Currencies;
-import java.simpleMoney.models.TransferRequest;
-import java.simpleMoney.services.AccountService;
+import simpleMoney.builders.AccountBuilder;
+import simpleMoney.builders.TransferRequestBuilder;
+import simpleMoney.library.ResponseCode;
+import simpleMoney.library.TransferTask;
+import simpleMoney.models.Account;
+import simpleMoney.models.Currencies;
+import simpleMoney.models.TransferRequest;
+import simpleMoney.services.AccountService;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

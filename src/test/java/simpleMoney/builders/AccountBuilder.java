@@ -1,8 +1,8 @@
-package java.simpleMoney.builders;
+package simpleMoney.builders;
 
-import java.simpleMoney.models.Account;
-import java.simpleMoney.models.Currencies;
-import java.simpleMoney.models.Money;
+import simpleMoney.models.Account;
+import simpleMoney.models.Currencies;
+import simpleMoney.models.Money;
 
 public class AccountBuilder {
 

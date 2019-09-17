@@ -1,6 +1,6 @@
-package java.simpleMoney.repositories;
+package simpleMoney.repositories;
 
-import java.simpleMoney.library.Repository;
+import simpleMoney.library.Repository;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
