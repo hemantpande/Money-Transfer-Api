@@ -13,7 +13,7 @@ import simpleMoney.models.Currencies;
 
 public class AccountServiceShould {
 
-    private AccountService accountService;
+    private final AccountService accountService = new AccountService();
 
     private Account jackAccount;
     private final Long jackAccountId = 1L;
@@ -26,7 +26,6 @@ public class AccountServiceShould {
 
     @Before
     public void setup(){
-        accountService = new AccountService();
 
         jackAccount = new AccountBuilder()
                 .newAccountWithId(jackAccountId)
