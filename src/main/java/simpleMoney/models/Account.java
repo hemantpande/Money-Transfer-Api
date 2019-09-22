@@ -1,10 +1,14 @@
 package simpleMoney.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
+@AllArgsConstructor
 public class Account {
 
     @Getter
@@ -21,9 +25,10 @@ public class Account {
     }
 
     public double getBalance(){
-        return balance.getBalance();
+        return balance.getAmount();
     }
 
+    @JsonCreator
     public Account(Long accountNumber) {
         this.accountNumber = accountNumber;
     }

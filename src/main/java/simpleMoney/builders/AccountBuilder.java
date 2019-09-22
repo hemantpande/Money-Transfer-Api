@@ -21,7 +21,7 @@ public class AccountBuilder {
     }
 
     public AccountBuilder andInitialBalance(double balance) {
-        initialBalance.setBalance(balance);
+        initialBalance.setAmount(balance);
         return this;
     }
 

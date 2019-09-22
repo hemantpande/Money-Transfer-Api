@@ -23,6 +23,10 @@ public class AccountService {
         _accountRepository.create(account.getAccountNumber(), account);
     }
 
+    public void delete(Long accountId) {
+        _accountRepository.delete(accountId);
+    }
+
     public Account getById(Long id){
         return _accountRepository.getById(id);
     }

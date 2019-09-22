@@ -4,5 +4,7 @@ public enum ResponseCode {
     SUCCESS,
     DUPLICATE_ACCOUNT,
     INACTIVE_ACCOUNT,
-    FAILURE
+    FAILURE,
+    PARSER_ERROR,
+    INVALID_ID;
 }
