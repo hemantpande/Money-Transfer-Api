@@ -1,6 +1,8 @@
 package simpleMoney.repositories;
 
 import simpleMoney.library.Repository;
+import simpleMoney.library.ResponseCode;
+import simpleMoney.library.exceptions.AccountException;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,6 +13,9 @@ public class InMemoryRepository<T> implements Repository<T> {
 
     @Override
     public void create(Long id, T t){
+        if(dataSource.containsValue(t)){
+            throw new AccountException(ResponseCode.DUPLICATE_ACCOUNT,"Account with same id already exists");
+        }
         dataSource.putIfAbsent(id, t);
     }
 

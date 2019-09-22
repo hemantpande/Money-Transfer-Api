@@ -1,4 +1,6 @@
-package simpleMoney.library;
+package simpleMoney.library.exceptions;
+
+import simpleMoney.library.ResponseCode;
 
 public class AccountException extends BaseException {
 

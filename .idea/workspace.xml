@@ -7,34 +7,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MoneyTransferService_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/AccountException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ApiParameterException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/BaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ClientNotFound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/MapperException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/lombok.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/unitTests/AccountShould.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/AccountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/AccountException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ApiParameterException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/ApiParameterException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/BaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/BaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ClientNotFound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/ClientNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/MapperException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/MapperException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/builders/AccountBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/builders/AccountBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/builders/TransferRequestBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/builders/TransferRequestBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountServiceShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountServiceShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,11 +50,17 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1RClhdLyWzWbsUbHxuz8fvJO9fL" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/simpleMoney/library" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -87,7 +90,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AccountShould.NotGetCreatedWhenAccountWithSameIdExists">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="simpleMoney.Application" />
       <module name="MoneyTransferService" />
@@ -101,8 +104,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AccountShould.NotGetCreatedWhenAccountWithSameIdExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MoneyTransferService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpleMoney.unitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="simpleMoney.unitTests" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.unitTests.AccountShould" />
+      <option name="METHOD_NAME" value="NotGetCreatedWhenAccountWithSameIdExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountShould.NotGetCreatedWhenAccountWithSameIdExists" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
@@ -118,12 +138,42 @@
       <option name="project" value="LOCAL" />
       <updated>1569139603430</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="API server up">
+      <created>1569178975341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569178975341</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="" />
+      <created>1569179078790</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569179078790</updated>
+      <workItem from="1569179080388" duration="6606000" />
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="API server up" />
+    <option name="LAST_COMMIT_MESSAGE" value="API server up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -139,9 +189,14 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountApi.java</url>
-          <line>62</line>
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
+          <line>43</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

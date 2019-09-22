@@ -47,4 +47,18 @@ public class Account {
 
         balance.update(creditedBalance);
     }
+
+    @Override
+    public boolean equals(Object value) {
+        if (value == this) {
+            return true;
+        }
+
+        if (!(value instanceof Account)) {
+            return false;
+        }
+
+        Account valueToCompare = (Account) value;
+        return Long.compare(accountNumber, valueToCompare.accountNumber) == 0;
+    }
 }

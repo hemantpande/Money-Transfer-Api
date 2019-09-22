@@ -6,5 +6,6 @@ public enum ResponseCode {
     INACTIVE_ACCOUNT,
     FAILURE,
     PARSER_ERROR,
-    INVALID_ID;
+    INVALID_ID,
+    NOT_FOUND;
 }
