@@ -39,7 +39,25 @@ a. Copy dependencies to the directory `mvn install dependency:copy-dependencies`
 b. Run - `java -cp target/money-transfer-api-1.0-SNAPSHOT.jar:target/dependency/* simpleMoney.Application`   
 c. The service by default starts at 8080, Hit - http://localhost:8080/status . The service should return `API is up and running`
 
-3. Run tests - `mvn test`
+3. Run tests - `mvn test`   
+_TEST O/P_
+
+
+####TESTS
+
+Running simpleMoney.concurrencyTests.AccountServiceTests   
+Processed 10000 transactions sequentially in PT-3.463002S   
+Processed 10000 transactions in parallel in PT-2.780389S   
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.287 sec - in simpleMoney.concurrencyTests.AccountServiceTests   
+Running simpleMoney.integrationTests.AccountShould   
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.integrationTests.AccountShould   
+Running simpleMoney.unitTests.AccountShould   
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.unitTests.AccountShould   
+
+Results :   
+
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0   
+
 
 ### REST API
 The Account rest service exposes 4 APIs. They are described below.   
