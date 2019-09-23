@@ -27,13 +27,10 @@ public class AccountRestService extends RestServiceBase {
 
     public AccountRestService() {
         service = new AccountService();
-
         Service_root = "account";
         Service_root_id = "accountId";
-
         initApi();
         initExceptionMapper();
-
         Spark.post("/account-transfer", this::transfer);
     }
 

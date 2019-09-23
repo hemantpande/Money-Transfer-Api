@@ -7,11 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -56,6 +57,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="simpleMoney.services" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="simpleMoney" />
     </key>
@@ -203,7 +207,28 @@
       <option name="project" value="LOCAL" />
       <updated>1569242103339</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Our API is now parallel">
+      <created>1569244763540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569244763540</updated>
+    </task>
+    <task id="LOCAL-00005" summary="readme">
+      <created>1569244883665</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569244883665</updated>
+    </task>
+    <task id="LOCAL-00006" summary="cleanup">
+      <created>1569245024111</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569245024111</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +251,10 @@
     <MESSAGE value="." />
     <MESSAGE value="API server up" />
     <MESSAGE value="Readme's, more tests and refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme's, more tests and refactoring" />
+    <MESSAGE value="Our API is now parallel" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -42,14 +42,17 @@ public abstract class RestServiceBase {
     }
 
     protected String executeRequest(Callable<String> callable){
+        String responseCode;
         try {
             Future<String> returnValue = executor.submit(callable);
-            return returnValue.get();
+            responseCode = returnValue.get();
         } catch (InterruptedException | ExecutionException e) {
-            return ResponseCode.FAILURE.toString();
+            responseCode = ResponseCode.FAILURE.toString();
         }finally {
             executor.shutdown();
         }
+
+        return responseCode;
     }
 
     private static <T extends BaseException> void handleException(T exception, Response res, int statusCode) {
