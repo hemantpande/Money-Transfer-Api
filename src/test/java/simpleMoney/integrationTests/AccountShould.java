@@ -1,16 +1,16 @@
 package simpleMoney.integrationTests;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import simpleMoney.library.ResponseCode;
 import simpleMoney.models.Account;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.services.AccountService;
 import simpleMoney.models.Currencies;
 import simpleMoney.builders.*;
 
-public class AccountServiceShould {
+public class AccountShould {
 
     private final AccountService accountService = new AccountService();
 
@@ -87,8 +87,24 @@ public class AccountServiceShould {
         Assert.assertEquals(7103L, hemantCurrentBalance,0);
     }
 
-    @After
-    public void teardown(){
+    @Test
+    public void failTransferWhenSourceAccountHasInsufficientBalance(){
+        steveAccount = new AccountBuilder()
+                .newAccountWithId(steveAccountId)
+                .withName("Steve")
+                .withBaseCurrency(Currencies.USD)
+                .andInitialBalance(0)
+                .build();
+        accountService.create(steveAccount);
 
+        TransferRequest request = new TransferRequestBuilder()
+                .transfer(1000D)
+                .from(jackAccountId)
+                .to(steveAccountId)
+                .build();
+
+        ResponseCode response = accountService.transfer(request);
+
+        Assert.assertEquals(ResponseCode.INSUFFICIENT_BALANCE, response);
     }
 }

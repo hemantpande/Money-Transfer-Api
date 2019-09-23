@@ -18,7 +18,7 @@ import java.util.concurrent.Future;
 
 public class AccountServiceTests {
 
-    private final int maxNumberOfTransactions = 1000000;
+    private final int maxNumberOfTransactions = 10000;
     private final AccountService accountService = new AccountService();
 
     @Test

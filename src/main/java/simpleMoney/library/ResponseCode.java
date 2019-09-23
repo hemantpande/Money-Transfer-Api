@@ -7,5 +7,6 @@ public enum ResponseCode {
     FAILURE,
     PARSER_ERROR,
     INVALID_ID,
-    NOT_FOUND;
+    NOT_FOUND,
+    INSUFFICIENT_BALANCE;
 }

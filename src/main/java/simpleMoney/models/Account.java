@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import simpleMoney.library.ResponseCode;
+import simpleMoney.library.exceptions.InsufficientBalanceException;
 
 @Data
 @AllArgsConstructor
@@ -36,6 +38,12 @@ public class Account {
     public void debit(double amount) {
         final double currentBalance = getBalance();
         final double debitedBalance = currentBalance - amount;
+
+        if(debitedBalance < 0){
+            throw new InsufficientBalanceException(ResponseCode.INSUFFICIENT_BALANCE,
+                    "Source account does not have enough balance");
+        }
+
         balance.update(debitedBalance);
     }
 
@@ -59,6 +67,6 @@ public class Account {
         }
 
         Account valueToCompare = (Account) value;
-        return Long.compare(accountNumber, valueToCompare.accountNumber) == 0;
+        return accountNumber == valueToCompare.accountNumber;
     }
 }

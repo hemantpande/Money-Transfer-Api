@@ -1,6 +1,5 @@
 package simpleMoney.library;
 
-import simpleMoney.library.*;
 import simpleMoney.library.exceptions.*;
 import spark.Request;
 import spark.Response;
@@ -16,7 +15,7 @@ public abstract class RestServiceBase {
     protected String Service_root;
     protected String Service_root_id;
 
-    public void initApi() {
+    protected void initApi() {
         port(8080);
         Spark.threadPool(10, 1, 10000);
 
@@ -33,11 +32,11 @@ public abstract class RestServiceBase {
 
     protected abstract String delete(Request request, Response response);
 
-    public void initExceptionMapper() {
+    protected void initExceptionMapper() {
         exception(ApiParameterException.class, (exception, req, res) -> handleException(exception, res, BAD_REQUEST_400));
-        exception(ClientNotFoundException.class, (exception, req, res) -> handleException(exception, res, NOT_FOUND_404));
+        exception(NotFoundException.class, (exception, req, res) -> handleException(exception, res, NOT_FOUND_404));
         exception(MapperException.class, (exception, req, res) -> handleException(exception, res, BAD_REQUEST_400));
-        exception(AccountException.class, (exception, req, res) -> handleException(exception, res, BAD_REQUEST_400));
+        exception(AlreadyExistsException.class, (exception, req, res) -> handleException(exception, res, BAD_REQUEST_400));
     }
 
     private static <T extends BaseException> void handleException(T exception, Response res, int statusCode) {

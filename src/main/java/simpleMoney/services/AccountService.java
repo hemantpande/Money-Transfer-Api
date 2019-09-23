@@ -2,6 +2,8 @@ package simpleMoney.services;
 
 import simpleMoney.library.Repository;
 import simpleMoney.library.ResponseCode;
+import simpleMoney.library.exceptions.AlreadyExistsException;
+import simpleMoney.library.exceptions.InsufficientBalanceException;
 import simpleMoney.models.Account;
 import simpleMoney.models.Currencies;
 import simpleMoney.models.TransferRequest;
@@ -36,6 +38,12 @@ public class AccountService {
         try{
             final Account fromAccount = _accountRepository.getById(request.getFromId());
             final Account toAccount = _accountRepository.getById(request.getToId());
+
+            if(fromAccount == null || toAccount == null){
+                throw new AlreadyExistsException(ResponseCode.NOT_FOUND,
+                        "Account involved in the transaction do not exists");
+            }
+
             final Currencies sourceCurrencyForConversion = fromAccount.getBaseCurrency();
 
             fromAccount.debit(request.getAmount());
@@ -44,10 +52,11 @@ public class AccountService {
             _accountRepository.update(request.getFromId(), fromAccount);
             _accountRepository.update(request.getToId(), toAccount);
 
-            // TODO : Remove
-            System.out.println("Current thread: " + Thread.currentThread().getName());
-
             return ResponseCode.SUCCESS;
+        }catch(AlreadyExistsException exception){
+            return ResponseCode.NOT_FOUND;
+        }catch (InsufficientBalanceException exception){
+            return ResponseCode.INSUFFICIENT_BALANCE;
         }catch(Exception exception){
             return ResponseCode.FAILURE;
         }

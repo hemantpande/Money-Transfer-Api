@@ -2,7 +2,8 @@ package simpleMoney.repositories;
 
 import simpleMoney.library.Repository;
 import simpleMoney.library.ResponseCode;
-import simpleMoney.library.exceptions.AccountException;
+import simpleMoney.library.exceptions.AlreadyExistsException;
+import simpleMoney.library.exceptions.NotFoundException;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,14 +15,19 @@ public class InMemoryRepository<T> implements Repository<T> {
     @Override
     public void create(Long id, T t){
         if(dataSource.containsValue(t)){
-            throw new AccountException(ResponseCode.DUPLICATE_ACCOUNT,"Account with same id already exists");
+            throw new AlreadyExistsException(ResponseCode.DUPLICATE_ACCOUNT,
+                    "Artifact with same id already exists");
         }
         dataSource.putIfAbsent(id, t);
     }
 
     @Override
     public T getById(Long id){
-        return dataSource.get(id);
+        T t = dataSource.get(id);
+        if(t == null){
+            throw new NotFoundException(ResponseCode.NOT_FOUND, "Artifact not found");
+        }
+        return t;
     }
 
     @Override
@@ -33,5 +39,4 @@ public class InMemoryRepository<T> implements Repository<T> {
     public void delete(Long id){
         dataSource.remove(id);
     }
-
 }
