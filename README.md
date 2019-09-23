@@ -13,10 +13,10 @@ The use cases are specified in a separate file in the parent directory.
 
 
 ### Libraries used
-JUnit - For testing
-Spark - For hosting the API. (Our service runs in parallel mode by default)
-Lombok - For keeping code concise and clean.
-Jackson - For json serialization and de-serialization
+1. JUnit - For testing
+2. Spark - For hosting the API. (Our service runs in parallel mode by default. We are not using Spark's inbuilt parallel mechanism)   
+3. Lombok - For keeping code concise and clean.   
+4. Jackson - For json serialization and de-serialization
 
 ### Key decision points
 1. For the requirements of an in-memory data store, there were 2 options. H2 and an in-memory collection.   
