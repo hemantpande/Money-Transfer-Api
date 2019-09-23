@@ -44,6 +44,8 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(ResponseInfo.create("Successfully created", SUCCESS));
             }catch (AlreadyExistsException exception){
                 return Mapper.toJson(ResponseInfo.create("Account with same id already exists", DUPLICATE_ACCOUNT));
+            }catch(Exception exception){
+                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }
         });
     }
@@ -59,6 +61,10 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(responseInfo);
             }catch(NotFoundException exception){
                 return Mapper.toJson(ResponseInfo.create("Account does not exist", NOT_FOUND));
+            }catch(ApiParameterException exception){
+                return Mapper.toJson(ResponseInfo.create("AccountId should be a number", FAILURE));
+            }catch(Exception exception){
+                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }
         });
     }
@@ -72,6 +78,10 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(ResponseInfo.create("Successfully deleted", SUCCESS));
             }catch(NotFoundException exception){
                 return Mapper.toJson(ResponseInfo.create("Account does not exist", NOT_FOUND));
+            }catch(ApiParameterException exception){
+                return Mapper.toJson(ResponseInfo.create("AccountId should be a number", FAILURE));
+            }catch(Exception exception){
+                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }
         });
     }
@@ -86,6 +96,8 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(ResponseInfo.create("Account does not exist", NOT_FOUND));
             }catch (InsufficientBalanceException exception){
                 return Mapper.toJson(ResponseInfo.create("Insufficient balance at source", INSUFFICIENT_BALANCE));
+            }catch(Exception exception){
+                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }
         });
     }

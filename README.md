@@ -41,22 +41,21 @@ c. The service by default starts at 8080, Hit - http://localhost:8080/status . T
 
 3. Run tests - `mvn test`   
 _TEST O/P_
+```
+------- T E S T S -------   
+Running simpleMoney.concurrencyTests.AccountServiceTests
+Processed 10000 transactions sequentially in PT-3.774388S
+Processed 10000 transactions in parallel in PT-2.578507S
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.414 sec - in simpleMoney.concurrencyTests.AccountServiceTests
+Running simpleMoney.integrationTests.AccountShould
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.integrationTests.AccountShould
+Running simpleMoney.unitTests.AccountShould
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.unitTests.AccountShould
 
+Results :
 
-####TESTS
-
-Running simpleMoney.concurrencyTests.AccountServiceTests   
-Processed 10000 transactions sequentially in PT-3.463002S   
-Processed 10000 transactions in parallel in PT-2.780389S   
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.287 sec - in simpleMoney.concurrencyTests.AccountServiceTests   
-Running simpleMoney.integrationTests.AccountShould   
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.integrationTests.AccountShould   
-Running simpleMoney.unitTests.AccountShould   
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.unitTests.AccountShould   
-
-Results :   
-
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0   
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+```  
 
 
 ### REST API

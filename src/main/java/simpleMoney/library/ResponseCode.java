@@ -3,7 +3,7 @@ package simpleMoney.library;
 public enum ResponseCode {
     SUCCESS,
     DUPLICATE_ACCOUNT,
-    INACTIVE_ACCOUNT,
+    BAD_REQUEST,
     FAILURE,
     PARSER_ERROR,
     INVALID_ID,

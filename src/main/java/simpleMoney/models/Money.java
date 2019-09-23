@@ -7,8 +7,6 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Money {
 
     private double amount;
@@ -16,9 +14,15 @@ public class Money {
     @Getter @Setter
     private Currencies baseCurrency;
 
-    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    private Lock readLock = readWriteLock.readLock();
-    private Lock writeLock = readWriteLock.writeLock();
+    private ReadWriteLock readWriteLock;
+    private Lock readLock;
+    private Lock writeLock;
+
+    public Money() {
+        readWriteLock = new ReentrantReadWriteLock();
+        readLock = readWriteLock.readLock();
+        writeLock = readWriteLock.writeLock();
+    }
 
     public double getExchangeRate(Currencies sourceCurrencyForConversion) {
 
