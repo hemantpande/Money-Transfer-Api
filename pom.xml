@@ -23,7 +23,6 @@
         <assertj-core.version>3.11.1</assertj-core.version>
         <awaitility.version>3.0.0</awaitility.version>
         <mockito-all>1.9.5</mockito-all>
-        <apache-commons2>2.5</apache-commons2>
     </properties>
 
     <dependencies>

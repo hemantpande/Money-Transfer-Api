@@ -10,6 +10,10 @@ import spark.Request;
 import spark.Response;
 import spark.Spark;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import static org.eclipse.jetty.http.HttpStatus.*;
 import static simpleMoney.library.ResponseCode.INVALID_ID;
 import static simpleMoney.library.ResponseCode.SUCCESS;
@@ -35,32 +39,40 @@ public class AccountRestService extends RestServiceBase {
 
     @Override
     public String create(Request request, Response response) {
-        Account account = Mapper.fromJson(request.body(), Account.class);
-        service.create(account);
-        response.status(CREATED_201);
-        return Mapper.toJson(ResponseInfo.create("Successfully created", SUCCESS));
+        return super.executeRequest(() -> {
+            Account account = Mapper.fromJson(request.body(), Account.class);
+            service.create(account);
+            response.status(CREATED_201);
+            return Mapper.toJson(ResponseInfo.create("Successfully created", SUCCESS));
+        });
     }
 
     @Override
     public String get(Request request, Response response) {
-        long id = parseAccountId(request.params(PARAM_ACCOUNT_ID));
-        Account account = service.getById(id);
-        ResponseInfo<Account> responseInfo = new ResponseInfo<>();
-        responseInfo.setData(account);
-        return Mapper.toJson(responseInfo);
+        return super.executeRequest(() -> {
+            long id = parseAccountId(request.params(PARAM_ACCOUNT_ID));
+            Account account = service.getById(id);
+            ResponseInfo<Account> responseInfo = new ResponseInfo<>();
+            responseInfo.setData(account);
+            return Mapper.toJson(responseInfo);
+        });
     }
 
     @Override
     public String delete(Request req, Response res) {
-        long id = parseAccountId(req.params(PARAM_ACCOUNT_ID));
-        service.delete(id);
-        return Mapper.toJson(ResponseInfo.create("Successfully deleted", SUCCESS));
+        return super.executeRequest(() -> {
+            long id = parseAccountId(req.params(PARAM_ACCOUNT_ID));
+            service.delete(id);
+            return Mapper.toJson(ResponseInfo.create("Successfully deleted", SUCCESS));
+        });
     }
 
     public String transfer(Request request, Response response) {
-        TransferRequest transferRequest = Mapper.fromJson(request.body(), TransferRequest.class);
-        final ResponseCode responseCode = service.transfer(transferRequest);
-        return Mapper.toJson(ResponseInfo.create("Request executed", responseCode));
+        return super.executeRequest(() -> {
+            TransferRequest transferRequest = Mapper.fromJson(request.body(), TransferRequest.class);
+            final ResponseCode responseCode = service.transfer(transferRequest);
+            return Mapper.toJson(ResponseInfo.create("Request executed", responseCode));
+        });
     }
 
     private long parseAccountId(String accountId) {
