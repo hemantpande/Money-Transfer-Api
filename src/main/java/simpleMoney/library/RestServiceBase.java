@@ -16,10 +16,11 @@ public abstract class RestServiceBase {
 
     protected String Service_root;
     protected String Service_root_id;
-    protected ExecutorService executor;
+    private ExecutorService executor;
 
     protected void initApi() {
-        executor = Executors.newFixedThreadPool(10);
+        executor = new ThreadPoolExecutor(3, 3, 0L,
+                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(15));
 
         Spark.port(8080);
         Spark.get("/status", (req, res) -> "API is up and running");
@@ -48,7 +49,6 @@ public abstract class RestServiceBase {
             responseCode = returnValue.get();
         } catch (InterruptedException | ExecutionException e) {
             responseCode = ResponseCode.FAILURE.toString();
-        }finally {
             executor.shutdown();
         }
 

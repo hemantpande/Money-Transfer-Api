@@ -2,16 +2,23 @@ package simpleMoney.models;
 
 import lombok.*;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Money {
 
-    @Getter @Setter
     private double amount;
 
     @Getter @Setter
     private Currencies baseCurrency;
+
+    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private Lock readLock = readWriteLock.readLock();
+    private Lock writeLock = readWriteLock.writeLock();
 
     public double getExchangeRate(Currencies sourceCurrencyForConversion) {
 
@@ -22,7 +29,21 @@ public class Money {
         return exchangeRate.getExchangeRate();
     }
 
+    public double getAmount() {
+        try{ // this block can never throw an exception
+            readLock.lock();
+            return amount;
+        }finally {
+            readLock.unlock();
+        }
+    }
+
     public void update(double updatedBalance) {
-        this.amount = updatedBalance;
+        try{ // this block can never throw an exception
+            writeLock.lock();
+            this.amount = updatedBalance;
+        }finally {
+            writeLock.unlock();
+        }
     }
 }

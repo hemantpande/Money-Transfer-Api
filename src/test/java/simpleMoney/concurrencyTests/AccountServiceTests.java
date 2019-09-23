@@ -1,5 +1,6 @@
 package simpleMoney.concurrencyTests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import simpleMoney.builders.*;
 import simpleMoney.library.ResponseCode;
@@ -34,14 +35,12 @@ public class AccountServiceTests {
             createAccountWith(secondAccountId);
 
             TransferRequest request = getTransferRequestFor(firstAccountId, secondAccountId);
-            System.out.println("Attempting to transfer $50 dollars from account " + firstAccountId
-                    + " to " + secondAccountId);
 
             ResponseCode response = accountService.transfer(request);
-            System.out.println("Response-" + response);
+            Assert.assertEquals(ResponseCode.SUCCESS, response);
         }
 
-        System.out.println("Processed " + maxNumberOfTransactions + " transactions completed in "
+        System.out.println("Processed " + maxNumberOfTransactions + " transactions sequentially in "
                 + Duration.between(LocalDateTime.now(), startTime));
     }
 
@@ -61,20 +60,15 @@ public class AccountServiceTests {
                 TransferRequest request = getTransferRequestFor(firstAccountId, secondAccountId);
                 final TransferTask transferTask = new TransferTask(request, accountService::transfer);
                 Future<ResponseCode> response = executor.submit(transferTask);
-                System.out.println("Attempting to transfer $50 dollars from account " + firstAccountId
-                        + " to " + secondAccountId);
-
-                System.out.println("Response-" + response.get());
+                Assert.assertEquals(ResponseCode.SUCCESS, response.get());
             }
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }finally {
+        } finally {
             executor.shutdown();
         }
 
-        System.out.println("Processed " + maxNumberOfTransactions + " transactions completed in "
+        System.out.println("Processed " + maxNumberOfTransactions + " transactions in parallel in "
                 + Duration.between(LocalDateTime.now(), startTime));
     }
 

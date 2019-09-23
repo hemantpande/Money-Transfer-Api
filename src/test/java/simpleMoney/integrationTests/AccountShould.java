@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import simpleMoney.library.ResponseCode;
+import simpleMoney.library.exceptions.InsufficientBalanceException;
 import simpleMoney.models.Account;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.services.AccountService;
@@ -87,7 +88,7 @@ public class AccountShould {
         Assert.assertEquals(7103L, hemantCurrentBalance,0);
     }
 
-    @Test
+    @Test(expected = InsufficientBalanceException.class)
     public void failTransferWhenSourceAccountHasInsufficientBalance(){
         steveAccount = new AccountBuilder()
                 .newAccountWithId(steveAccountId)
@@ -104,7 +105,5 @@ public class AccountShould {
                 .build();
 
         ResponseCode response = accountService.transfer(request);
-
-        Assert.assertEquals(ResponseCode.INSUFFICIENT_BALANCE, response);
     }
 }

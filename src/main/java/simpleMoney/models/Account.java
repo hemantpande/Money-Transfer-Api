@@ -1,7 +1,6 @@
 package simpleMoney.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -67,6 +66,6 @@ public class Account {
         }
 
         Account valueToCompare = (Account) value;
-        return accountNumber == valueToCompare.accountNumber;
+        return accountNumber.equals(valueToCompare.accountNumber);
     }
 }

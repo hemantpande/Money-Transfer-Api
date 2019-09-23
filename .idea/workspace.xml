@@ -6,12 +6,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/Service.java" afterDir="false" />
+    <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="Final shapes to application">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MoneyTransferService_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/unitTests/AccountShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/unitTests/AccountShould.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +64,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -86,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="simpleMoney.Application" />
       <module name="MoneyTransferService" />
@@ -166,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
         <item itemvalue="JUnit.AccountShould.failTransferWhenSourceAccountHasInsufficientBalance" />
         <item itemvalue="JUnit.AccountShould.CreateNewAccount" />
         <item itemvalue="JUnit.AccountShould.NotBeFetchedWhenItDoesNotExists" />
         <item itemvalue="JUnit.AccountShould.NotGetCreatedWhenAccountWithSameIdExists" />
-        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -271,8 +281,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java</url>
-          <line>38</line>
+          <line>37</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/library/RestServiceBase.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

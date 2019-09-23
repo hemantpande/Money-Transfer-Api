@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="money-transfer-api" />
+        <module name="MoneyTransferService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -37,6 +37,9 @@ public class InMemoryRepository<T> implements Repository<T> {
 
     @Override
     public void delete(Long id){
+        if(!dataSource.containsKey(id)){
+            throw new NotFoundException(ResponseCode.NOT_FOUND, "Artifact not found");
+        }
         dataSource.remove(id);
     }
 }
