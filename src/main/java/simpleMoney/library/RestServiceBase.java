@@ -45,9 +45,7 @@ public abstract class RestServiceBase {
         try {
             Future<String> returnValue = executor.submit(callable);
             return returnValue.get();
-        } catch (InterruptedException e) {
-            return ResponseCode.FAILURE.toString();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             return ResponseCode.FAILURE.toString();
         }finally {
             executor.shutdown();
