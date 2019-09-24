@@ -28,7 +28,8 @@ The core area where the deadlock can happen (in money class), uses read-write re
 ### Key decision points
 1. For the requirements of an in-memory data store, there were 2 options. H2 and an in-memory collection.   
 Our aim is to focus on testability, parallel executions and simplicity.   
-Hence, a concurrent HashMap, since it suffices our need.
+Hence, a concurrent HashMap, since it suffices our need.   
+2. We have followed [Subcutaneous testing](https://martinfowler.com/bliki/SubcutaneousTest.html)
 
 ### Steps to build and run 
 **_Note_** - The application uses JAVA 11 to run. Please change the module settings if the code does not compile.   
