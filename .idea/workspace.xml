@@ -8,11 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/repositories/InMemoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +48,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/simpleMoney/library" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -88,7 +88,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="JUnit.AccountServiceTests.DeadlockTest">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="simpleMoney.Application" />
       <module name="MoneyTransferService" />
@@ -98,6 +98,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServiceTests.DeadlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MoneyTransferService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="simpleMoney.concurrencyTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="simpleMoney.concurrencyTests" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.concurrencyTests.AccountServiceTests" />
+      <option name="METHOD_NAME" value="DeadlockTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,22 +150,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountShould.NotGetCreatedWhenAccountWithSameIdExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MoneyTransferService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="simpleMoney.unitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="simpleMoney.unitTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.unitTests.AccountShould" />
-      <option name="METHOD_NAME" value="NotGetCreatedWhenAccountWithSameIdExists" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AccountShould.failTransferWhenSourceAccountHasInsufficientBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="money-transfer-api" />
       <extension name="coverage">
@@ -168,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountServiceTests.DeadlockTest" />
         <item itemvalue="Application.Application" />
         <item itemvalue="JUnit.AccountShould.failTransferWhenSourceAccountHasInsufficientBalance" />
         <item itemvalue="JUnit.AccountShould.CreateNewAccount" />
         <item itemvalue="JUnit.AccountShould.NotBeFetchedWhenItDoesNotExists" />
-        <item itemvalue="JUnit.AccountShould.NotGetCreatedWhenAccountWithSameIdExists" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +201,8 @@
       <option name="presentableId" value="Default" />
       <updated>1569179078790</updated>
       <workItem from="1569179080388" duration="6606000" />
-      <workItem from="1569269891503" duration="561000" />
+      <workItem from="1569269891503" duration="739000" />
+      <workItem from="1569602674897" duration="8446000" />
     </task>
     <task id="LOCAL-00003" summary="Readme's, more tests and refactoring">
       <created>1569242103339</created>
@@ -245,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569268428131</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bug fix">
+      <created>1569270606557</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1569270606557</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,7 +280,8 @@
     <MESSAGE value="readme" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="Final shape to application" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final shape to application" />
+    <MESSAGE value="Bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -286,16 +295,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/infrastructure/JettyService.java</url>
           <line>14</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

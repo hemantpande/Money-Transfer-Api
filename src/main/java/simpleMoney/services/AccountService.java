@@ -12,10 +12,13 @@ import simpleMoney.repositories.InMemoryRepository;
 
 public class AccountService{
 
+    private Object lock;
+
     private final Repository<Account> _accountRepository;
 
     public AccountService() {
-        _accountRepository = new InMemoryRepository<>();
+        this(new InMemoryRepository<>());
+        lock = new Object();
     }
 
     // Note: For mocking repository
@@ -37,6 +40,7 @@ public class AccountService{
 
     public ResponseCode transfer(TransferRequest request)
             throws NotFoundException, InsufficientBalanceException{
+
         final Account fromAccount = _accountRepository.getById(request.getFromId());
         final Account toAccount = _accountRepository.getById(request.getToId());
 
@@ -47,8 +51,10 @@ public class AccountService{
 
         final Currencies sourceCurrencyForConversion = fromAccount.getBaseCurrency();
 
-        fromAccount.debit(request.getAmount());
-        toAccount.credit(request.getAmount(), sourceCurrencyForConversion);
+        synchronized(lock){
+            fromAccount.debit(request.getAmount());
+            toAccount.credit(request.getAmount(), sourceCurrencyForConversion);
+        }
 
         _accountRepository.update(request.getFromId(), fromAccount);
         _accountRepository.update(request.getToId(), toAccount);

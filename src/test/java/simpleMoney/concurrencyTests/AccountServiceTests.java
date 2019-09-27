@@ -12,10 +12,7 @@ import simpleMoney.services.AccountService;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class AccountServiceTests {
 
@@ -48,7 +45,7 @@ public class AccountServiceTests {
     public void MeasureTimeTakenWhenTransactionsAreExecutedParallelly() {
         final ExecutorService executor = Executors.newFixedThreadPool(10);
         final LocalDateTime startTime = LocalDateTime.now();
-        try{
+        try {
             for (int current = 0; current < maxNumberOfTransactions; current++) {
 
                 final int firstAccountId = current;
@@ -72,20 +69,102 @@ public class AccountServiceTests {
                 + Duration.between(LocalDateTime.now(), startTime));
     }
 
-    private TransferRequest getTransferRequestFor(int firstAccountId, int secondAccountId) {
-        return new TransferRequestBuilder()
-                        .transfer(100D)
-                        .from(Long.valueOf(firstAccountId))
-                        .to(Long.valueOf(secondAccountId))
-                        .build();
+    @Test
+    public void DeadlockTest() {
+        System.out.println("**This test will check if the application is Thread-safe and deadlock free**");
+
+        final long firstAccountId = 1L;
+        final long secondAccountId = 2L;
+        final long thirdAccountId = 3L;
+
+        Thread firstTransaction = getFirstTransactionThread(firstAccountId, secondAccountId);
+        Thread secondTransaction = getSecondTransactionThread(firstAccountId, thirdAccountId);
+
+        firstTransaction.start();
+        secondTransaction.start();
+
+        sleepForSomeTimeToLetTheThreadsComplete();
+
+        System.out.println("After execution - " + firstTransaction.getName() + " is "
+                + firstTransaction.getState());
+        System.out.println("After execution - " + secondTransaction.getName() + " is "
+                + secondTransaction.getState());
+
+        assertAccountBalanceFor(firstAccountId, secondAccountId, thirdAccountId);
     }
 
-    private void createAccountWith(int id) {
+    private void assertAccountBalanceFor(long firstAccountId, long secondAccountId, long thirdAccountId) {
+        final Account firstAccount = accountService.getById(firstAccountId);
+        Assert.assertEquals(firstAccount.getBalance(), 800L, 0);
+
+        final Account secondAccount = accountService.getById(secondAccountId);
+        Assert.assertEquals(secondAccount.getBalance(), 1100L, 0);
+
+        final Account thirdAccount = accountService.getById(thirdAccountId);
+        Assert.assertEquals(thirdAccount.getBalance(), 1100L, 0);
+    }
+
+    private Thread getSecondTransactionThread(long firstAccountId, long thirdAccountId) {
+        return new Thread(() -> {
+                final long begin = System.nanoTime();
+                createAccountWith(thirdAccountId);
+
+                final TransferRequest request = getTransferRequestFor(firstAccountId, thirdAccountId);
+                System.out.println("Thread name with " + Thread.currentThread().getName() + " is in "
+                        + Thread.currentThread().getState() + " state.");
+                System.out.println(String.format("Transfer request received from account %s to %s",
+                        request.getFromId(), request.getToId()));
+
+                accountService.transfer(request);
+
+                System.out.println("Exiting from 2st transaction in "
+                        + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                        + " milliseconds");
+            });
+    }
+
+    private Thread getFirstTransactionThread(long firstAccountId, long secondAccountId) {
+        return new Thread(() -> {
+                final long begin = System.nanoTime();
+                createAccountWith(firstAccountId);
+                createAccountWith(secondAccountId);
+
+                final TransferRequest request = getTransferRequestFor(firstAccountId, secondAccountId);
+                System.out.println("Thread name with " + Thread.currentThread().getName() + " is in "
+                        + Thread.currentThread().getState() + " state.");
+
+                System.out.println(String.format("Transfer request received from account %s to %s",
+                        request.getFromId(), request.getToId()));
+                accountService.transfer(request);
+
+                System.out.println("Exiting from 1st transaction in "
+                        + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                        + " milliseconds");
+            });
+    }
+
+    private void sleepForSomeTimeToLetTheThreadsComplete() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private TransferRequest getTransferRequestFor(long firstAccountId, long secondAccountId) {
+        return new TransferRequestBuilder()
+                .transfer(100D)
+                .from(firstAccountId)
+                .to(secondAccountId)
+                .build();
+    }
+
+    private void createAccountWith(long id) {
         Account secondAccount = new AccountBuilder()
-                .newAccountWithId(Long.valueOf(id))
+                .newAccountWithId(id)
                 .withName("account-" + id)
                 .withBaseCurrency(Currencies.USD)
-                .andInitialBalance(100D)
+                .andInitialBalance(1000D)
                 .build();
         accountService.create(secondAccount);
     }
