@@ -9,5 +9,6 @@ public enum ResponseCode {
     INVALID_ID,
     NOT_FOUND,
     INSUFFICIENT_BALANCE,
-    SAME_ACCOUNT;
+    SAME_ACCOUNT,
+    TRANSACTION_FAILURE;
 }

@@ -143,8 +143,8 @@ public class AccountServiceShould {
             accountService.transfer(request);
 
             System.out.println("Exiting from 1st transaction in "
-                    + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
-                    + " milliseconds");
+                    + TimeUnit.MICROSECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                    + " microSeconds");
         });
     }
 
@@ -173,8 +173,8 @@ public class AccountServiceShould {
                 accountService.transfer(request);
 
                 System.out.println("Exiting from 2st transaction in "
-                        + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
-                        + " milliseconds");
+                        + TimeUnit.MICROSECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                        + " microSeconds");
             });
     }
 
@@ -193,8 +193,8 @@ public class AccountServiceShould {
                 accountService.transfer(request);
 
                 System.out.println("Exiting from 1st transaction in "
-                        + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
-                        + " milliseconds");
+                        + TimeUnit.MICROSECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                        + " microSeconds");
             });
     }
 

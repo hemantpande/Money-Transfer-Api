@@ -175,6 +175,20 @@ public class AccountApiShould {
         delete(first);
     }
 
+    @Test
+    public void notTransferMoneyWhenEitherOfTheAccountsDoNotExists(){
+        final Account first = getTestAccount(1L, Currency.USD, 0D);
+        final Account second = getTestAccount(2L, Currency.USD, 100D);
+
+        create(first);
+
+        final Response response = transfer(first, second);
+        ResponseInfo responseInfo = parseResponse(response);
+        assertThat(responseInfo).isEqualTo(ResponseInfo.create("Account does not exist", NOT_FOUND));
+
+        delete(first);
+    }
+
     private Response transfer(Account first, Account second) {
 
         final TransferRequest transferRequest = new TransferRequestBuilder().from(first.getAccountNumber())

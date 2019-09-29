@@ -7,9 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/FailedTransactionException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/apiTests/AccountApiShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/apiTests/AccountApiShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceShould.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +68,9 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="simpleMoney" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="simpleMoney.library.exceptions" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="simpleMoney.library.exceptions" />
       <recent name="simpleMoney.library" />
@@ -86,7 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.simpleMoney in MoneyTransferService">
+  <component name="RunManager" selected="JUnit.AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance">
     <configuration name="AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
@@ -119,7 +127,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountApiShould.successfullyTransferMoneyInAccountsWithDifferentCurrency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountApiShould.notTransferMoneyWhenEitherOfTheAccountsDoNotExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
@@ -129,7 +137,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="simpleMoney.apiTests" />
       <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountApiShould" />
-      <option name="METHOD_NAME" value="successfullyTransferMoneyInAccountsWithDifferentCurrency" />
+      <option name="METHOD_NAME" value="notTransferMoneyWhenEitherOfTheAccountsDoNotExists" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance" />
+        <item itemvalue="JUnit.AccountApiShould.notTransferMoneyWhenEitherOfTheAccountsDoNotExists" />
         <item itemvalue="JUnit.simpleMoney in MoneyTransferService" />
         <item itemvalue="JUnit.AccountApiShould.notTransferMoneyInSameAccount" />
-        <item itemvalue="JUnit.AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance" />
         <item itemvalue="JUnit.AccountApiShould.successfullyTransferMoneyInAccountsWithSameCurrency" />
-        <item itemvalue="JUnit.AccountApiShould.successfullyTransferMoneyInAccountsWithDifferentCurrency" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +211,7 @@
       <workItem from="1569269891503" duration="739000" />
       <workItem from="1569602674897" duration="8507000" />
       <workItem from="1569733857162" duration="7335000" />
-      <workItem from="1569764446356" duration="8518000" />
+      <workItem from="1569764446356" duration="15022000" />
     </task>
     <task id="LOCAL-00003" summary="Readme's, more tests and refactoring">
       <created>1569242103339</created>
@@ -296,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569772848882</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="build batch">
+      <created>1569773324121</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1569773324121</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,14 +359,19 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

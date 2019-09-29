@@ -19,13 +19,10 @@ public class InMemoryRepository<T> implements Repository<T> {
                     "Artifact with same id already exists");
         }
         dataSource.putIfAbsent(id, t);
-
-        System.out.println("Account with account id " + id + " created.");
     }
 
     @Override
     public T getById(Long id){
-        System.out.println("Getting account with id " + id);
         T t = dataSource.get(id);
         if(t == null){
             throw new NotFoundException(ResponseCode.NOT_FOUND, "Artifact not found");

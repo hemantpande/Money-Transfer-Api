@@ -9,6 +9,9 @@ import lombok.Setter;
 import simpleMoney.library.ResponseCode;
 import simpleMoney.library.exceptions.InsufficientBalanceException;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 @Data
 @AllArgsConstructor
 public class Account {
@@ -35,6 +38,16 @@ public class Account {
     @JsonCreator
     public Account(Long accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    @JsonIgnore @Setter
+    private Lock lock;
+
+    public Lock getLock(){
+        if(lock == null){
+            return new ReentrantLock(true);
+        }
+        return lock;
     }
 
     public void debit(double amount) {
