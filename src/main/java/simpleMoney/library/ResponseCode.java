@@ -8,5 +8,6 @@ public enum ResponseCode {
     PARSER_ERROR,
     INVALID_ID,
     NOT_FOUND,
-    INSUFFICIENT_BALANCE;
+    INSUFFICIENT_BALANCE,
+    SAME_ACCOUNT;
 }

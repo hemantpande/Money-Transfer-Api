@@ -6,7 +6,7 @@ import simpleMoney.builders.*;
 import simpleMoney.library.ResponseCode;
 import simpleMoney.library.TransferTask;
 import simpleMoney.models.Account;
-import simpleMoney.models.Currencies;
+import simpleMoney.models.Currency;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.services.AccountService;
 
@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.concurrent.*;
 
-public class AccountServiceTests {
+public class AccountServiceShould {
 
     private final int maxNumberOfTransactions = 10000;
     private final AccountService accountService = new AccountService();
@@ -70,7 +70,7 @@ public class AccountServiceTests {
     }
 
     @Test
-    public void DeadlockTestBetweenMutuallyInclusiveAccounts() {
+    public void CheckForDeadlockBetweenMutuallyInclusiveAccounts() {
         System.out.println("**This test will check if the application is Thread-safe and deadlock free**");
 
         final long firstAccountId = 1L;
@@ -94,7 +94,7 @@ public class AccountServiceTests {
     }
 
     @Test
-    public void DeadlockTestBetweenMutuallyExclusiveAccounts() {
+    public void CheckForDeadlockBetweenMutuallyExclusiveAccounts() {
         System.out.println("**This test will check if the application is Thread-safe and deadlock free**");
 
         final long firstAccountId = 1L;
@@ -218,7 +218,7 @@ public class AccountServiceTests {
         Account secondAccount = new AccountBuilder()
                 .newAccountWithId(id)
                 .withName("account-" + id)
-                .withBaseCurrency(Currencies.USD)
+                .withBaseCurrency(Currency.USD)
                 .andInitialBalance(1000D)
                 .build();
         accountService.create(secondAccount);

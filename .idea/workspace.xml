@@ -7,13 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/apiTests/AccountServiceRestApiShould.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/exceptions/SameAccountException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/builders/AccountBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/builders/AccountBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/ResponseCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Currencies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Currency.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/ExchangeRates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/ExchangeRates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/Money.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/models/TransferRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/models/TransferRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/apiTests/AccountServiceRestApiShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/apiTests/AccountApiShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/concurrencyTests/AccountServiceShould.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/simpleMoney/integrationTests/AccountShould.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -91,8 +98,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AccountServiceRestApiShould.notCreateAccountWhenRequestIsNotAsExpected">
-    <configuration name="AccountServiceRestApiShould.createAccountWhenItIsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.simpleMoney in MoneyTransferService">
+    <configuration name="AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
@@ -101,14 +108,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpleMoney.apiTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountServiceRestApiShould" />
-      <option name="METHOD_NAME" value="createAccountWhenItIsValid" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountApiShould" />
+      <option name="METHOD_NAME" value="notTransferMoneyInAccountsWithInsufficientBalance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountServiceRestApiShould.notCreateAccountWhenRequestIsNotAsExpected" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountApiShould.notTransferMoneyInSameAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
@@ -117,68 +124,66 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="simpleMoney.apiTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountServiceRestApiShould" />
-      <option name="METHOD_NAME" value="notCreateAccountWhenRequestIsNotAsExpected" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountApiShould" />
+      <option name="METHOD_NAME" value="notTransferMoneyInSameAccount" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountServiceTests.DeadlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountApiShould.successfullyTransferMoneyInAccountsWithDifferentCurrency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="simpleMoney.concurrencyTests.*" />
+          <option name="PATTERN" value="simpleMoney.apiTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="simpleMoney.concurrencyTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.concurrencyTests.AccountServiceTests" />
-      <option name="METHOD_NAME" value="DeadlockTest" />
+      <option name="PACKAGE_NAME" value="simpleMoney.apiTests" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountApiShould" />
+      <option name="METHOD_NAME" value="successfullyTransferMoneyInAccountsWithDifferentCurrency" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountServiceTests.DeadlockTestBetweenMutuallyExclusiveAccounts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountApiShould.successfullyTransferMoneyInAccountsWithSameCurrency" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="simpleMoney.concurrencyTests.*" />
+          <option name="PATTERN" value="simpleMoney.apiTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="simpleMoney.concurrencyTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.concurrencyTests.AccountServiceTests" />
-      <option name="METHOD_NAME" value="DeadlockTestBetweenMutuallyExclusiveAccounts" />
+      <option name="PACKAGE_NAME" value="simpleMoney.apiTests" />
+      <option name="MAIN_CLASS_NAME" value="simpleMoney.apiTests.AccountApiShould" />
+      <option name="METHOD_NAME" value="successfullyTransferMoneyInAccountsWithSameCurrency" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountServiceTests.DeadlockTestBetweenMutuallyInclusiveAccounts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="simpleMoney in MoneyTransferService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MoneyTransferService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="simpleMoney.concurrencyTests.*" />
+          <option name="PATTERN" value="simpleMoney.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="simpleMoney.concurrencyTests" />
-      <option name="MAIN_CLASS_NAME" value="simpleMoney.concurrencyTests.AccountServiceTests" />
-      <option name="METHOD_NAME" value="DeadlockTestBetweenMutuallyInclusiveAccounts" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="simpleMoney" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AccountServiceRestApiShould.notCreateAccountWhenRequestIsNotAsExpected" />
-        <item itemvalue="JUnit.AccountServiceRestApiShould.createAccountWhenItIsValid" />
-        <item itemvalue="JUnit.AccountServiceTests.DeadlockTestBetweenMutuallyInclusiveAccounts" />
-        <item itemvalue="JUnit.AccountServiceTests.DeadlockTestBetweenMutuallyExclusiveAccounts" />
-        <item itemvalue="JUnit.AccountServiceTests.DeadlockTest" />
+        <item itemvalue="JUnit.simpleMoney in MoneyTransferService" />
+        <item itemvalue="JUnit.AccountApiShould.notTransferMoneyInSameAccount" />
+        <item itemvalue="JUnit.AccountApiShould.notTransferMoneyInAccountsWithInsufficientBalance" />
+        <item itemvalue="JUnit.AccountApiShould.successfullyTransferMoneyInAccountsWithSameCurrency" />
+        <item itemvalue="JUnit.AccountApiShould.successfullyTransferMoneyInAccountsWithDifferentCurrency" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +214,8 @@
       <workItem from="1569179080388" duration="6606000" />
       <workItem from="1569269891503" duration="739000" />
       <workItem from="1569602674897" duration="8507000" />
-      <workItem from="1569733857162" duration="7129000" />
+      <workItem from="1569733857162" duration="7335000" />
+      <workItem from="1569764446356" duration="7623000" />
     </task>
     <task id="LOCAL-00003" summary="Readme's, more tests and refactoring">
       <created>1569242103339</created>
@@ -267,7 +273,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569612326213</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="API tests">
+      <created>1569741598258</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1569741598258</updated>
+    </task>
+    <task id="LOCAL-00012" summary="API tests">
+      <created>1569741778139</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1569741778139</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +316,8 @@
     <MESSAGE value="Final shape to application" />
     <MESSAGE value="Bug fix" />
     <MESSAGE value="new deadlock test" />
-    <option name="LAST_COMMIT_MESSAGE" value="new deadlock test" />
+    <MESSAGE value="API tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="API tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,24 +333,14 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/services/AccountService.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java</url>
           <line>33</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/api/AccountRestService.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="12" />
+          <line>42</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -338,5 +349,10 @@
         <watch expression="OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(obj)" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MoneyTransferService$simpleMoney_in_MoneyTransferService.ic" NAME="simpleMoney in MoneyTransferService Coverage Results" MODIFIED="1569771383882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>simpleMoney.*</FILTER>
+    </SUITE>
   </component>
 </project>

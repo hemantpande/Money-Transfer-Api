@@ -23,7 +23,7 @@ public class Account {
     private Money balance;
 
     @JsonIgnore
-    public Currencies getBaseCurrency(){
+    public Currency getBaseCurrency(){
         return balance.getBaseCurrency();
     }
 
@@ -49,7 +49,7 @@ public class Account {
         balance.update(debitedBalance);
     }
 
-    public void credit(double amount, Currencies sourceCurrencyForConversion) {
+    public void credit(double amount, Currency sourceCurrencyForConversion) {
 
         final double currentBalance = getAmountBalance();
         final double rate = balance.getExchangeRate(sourceCurrencyForConversion);

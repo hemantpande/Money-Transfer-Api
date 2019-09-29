@@ -8,7 +8,7 @@ import simpleMoney.library.exceptions.InsufficientBalanceException;
 import simpleMoney.models.Account;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.services.AccountService;
-import simpleMoney.models.Currencies;
+import simpleMoney.models.Currency;
 import simpleMoney.builders.*;
 
 public class AccountShould {
@@ -30,7 +30,7 @@ public class AccountShould {
         jackAccount = new AccountBuilder()
                 .newAccountWithId(jackAccountId)
                 .withName("Jack")
-                .withBaseCurrency(Currencies.USD)
+                .withBaseCurrency(Currency.USD)
                 .andInitialBalance(500)
                 .build();
         accountService.create(jackAccount);
@@ -42,7 +42,7 @@ public class AccountShould {
         steveAccount = new AccountBuilder()
                 .newAccountWithId(steveAccountId)
                 .withName("Steve")
-                .withBaseCurrency(Currencies.USD)
+                .withBaseCurrency(Currency.USD)
                 .andInitialBalance(0)
                 .build();
         accountService.create(steveAccount);
@@ -68,7 +68,7 @@ public class AccountShould {
         hemantAccount = new AccountBuilder()
                 .newAccountWithId(hemantAccountId)
                 .withName("Steve")
-                .withBaseCurrency(Currencies.INR)
+                .withBaseCurrency(Currency.INR)
                 .andInitialBalance(0)
                 .build();
         accountService.create(hemantAccount);
@@ -93,7 +93,7 @@ public class AccountShould {
         steveAccount = new AccountBuilder()
                 .newAccountWithId(steveAccountId)
                 .withName("Steve")
-                .withBaseCurrency(Currencies.USD)
+                .withBaseCurrency(Currency.USD)
                 .andInitialBalance(0)
                 .build();
         accountService.create(steveAccount);

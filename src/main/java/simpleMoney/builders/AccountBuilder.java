@@ -1,7 +1,7 @@
 package simpleMoney.builders;
 
 import simpleMoney.models.Account;
-import simpleMoney.models.Currencies;
+import simpleMoney.models.Currency;
 import simpleMoney.models.Money;
 
 public class AccountBuilder {
@@ -25,7 +25,7 @@ public class AccountBuilder {
         return this;
     }
 
-    public AccountBuilder withBaseCurrency(Currencies baseCurrency) {
+    public AccountBuilder withBaseCurrency(Currency baseCurrency) {
         initialBalance.setBaseCurrency(baseCurrency);
         return this;
     }

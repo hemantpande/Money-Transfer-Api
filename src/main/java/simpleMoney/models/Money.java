@@ -8,9 +8,9 @@ public class Money {
     private double amount;
 
     @Getter @Setter
-    private Currencies baseCurrency;
+    private Currency baseCurrency;
 
-    public double getExchangeRate(Currencies sourceCurrencyForConversion) {
+    public double getExchangeRate(Currency sourceCurrencyForConversion) {
 
         /*this can be retrieved through an ExchangeRateAPI, having it hard-coded for simplicity sake, right now*/
         String exchangeRateMapping = sourceCurrencyForConversion.toString() + "_to_" + baseCurrency.toString();

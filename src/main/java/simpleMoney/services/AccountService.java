@@ -5,8 +5,9 @@ import simpleMoney.library.ResponseCode;
 import simpleMoney.library.exceptions.AlreadyExistsException;
 import simpleMoney.library.exceptions.InsufficientBalanceException;
 import simpleMoney.library.exceptions.NotFoundException;
+import simpleMoney.library.exceptions.SameAccountException;
 import simpleMoney.models.Account;
-import simpleMoney.models.Currencies;
+import simpleMoney.models.Currency;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.repositories.InMemoryRepository;
 
@@ -39,17 +40,21 @@ public class AccountService{
     }
 
     public ResponseCode transfer(TransferRequest request)
-            throws NotFoundException, InsufficientBalanceException{
+            throws NotFoundException, InsufficientBalanceException, SameAccountException {
+
+        if(request.getFromId().equals(request.getToId())){
+            throw new SameAccountException(ResponseCode.SAME_ACCOUNT, "Money cannot be transferred within same account");
+        }
 
         final Account fromAccount = _accountRepository.getById(request.getFromId());
         final Account toAccount = _accountRepository.getById(request.getToId());
 
         if(fromAccount == null || toAccount == null){
-            throw new AlreadyExistsException(ResponseCode.NOT_FOUND,
+            throw new NotFoundException(ResponseCode.NOT_FOUND,
                     "Account involved in the transaction do not exists");
         }
 
-        final Currencies sourceCurrencyForConversion = fromAccount.getBaseCurrency();
+        final Currency sourceCurrencyForConversion = fromAccount.getBaseCurrency();
 
         synchronized(lock){
             fromAccount.debit(request.getAmount());

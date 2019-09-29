@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hemantpande/money-transfer-api.svg?branch=master)](https://travis-ci.org/hemantpande/money-transfer-api)
+
 # Money Transfer Service
 
 ### Description
@@ -44,10 +46,10 @@ c. The service by default starts at 8080, Hit - http://localhost:8080/status . T
 _TEST O/P_
 ```
 ------- T E S T S -------   
-Running simpleMoney.concurrencyTests.AccountServiceTests
+Running simpleMoney.concurrencyTests.AccountServiceShould
 Processed 10000 transactions sequentially in PT-3.774388S
 Processed 10000 transactions in parallel in PT-2.578507S
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.414 sec - in simpleMoney.concurrencyTests.AccountServiceTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.414 sec - in simpleMoney.concurrencyTests.AccountServiceShould
 Running simpleMoney.integrationTests.AccountShould
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in simpleMoney.integrationTests.AccountShould
 Running simpleMoney.unitTests.AccountShould

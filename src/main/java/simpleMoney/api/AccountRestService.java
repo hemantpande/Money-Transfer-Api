@@ -95,6 +95,8 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(ResponseInfo.create("Account does not exist", NOT_FOUND));
             }catch (InsufficientBalanceException exception){
                 return Mapper.toJson(ResponseInfo.create("Insufficient balance at source", INSUFFICIENT_BALANCE));
+            }catch(SameAccountException exception){
+                return Mapper.toJson(ResponseInfo.create("Money cannot be transferred within same account", SAME_ACCOUNT));
             }catch(Exception exception){
                 return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }

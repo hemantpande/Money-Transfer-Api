@@ -1,8 +1,6 @@
 package simpleMoney.models;
 
-public enum Currencies {
+public enum Currency {
     USD,
-    EURO,
-    POUND,
     INR
 }
