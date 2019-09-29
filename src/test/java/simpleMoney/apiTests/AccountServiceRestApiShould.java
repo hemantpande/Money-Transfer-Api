@@ -58,9 +58,9 @@ public class AccountServiceRestApiShould {
     public void notCreateAccountWhenRequestIsNotAsExpected(){
         Response response = restEndpoint.target(endPoint)
                 .request()
-                .post(Entity.json("{\"id\":1,\"account\":[{\"amount\":100,\"currency\":\"RUB\"}]}"));
+                .post(Entity.json("{\"a\":1,\"b\":[{\"c\":100,\"d\":\"USD\"}]}"));
         ResponseInfo responseInfo = parseResponse(response);
-        assertThat(responseInfo).isEqualTo(ResponseInfo.create("Can't parse from JSON", PARSER_ERROR));
+        assertThat(responseInfo).isEqualTo(ResponseInfo.create("Cannot parse request to JSON", PARSER_ERROR));
     }
 
     private Account getTestAccount() {

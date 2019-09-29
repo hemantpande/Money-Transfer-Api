@@ -42,7 +42,7 @@ public class AccountRestService extends RestServiceBase {
             }catch (AlreadyExistsException exception){
                 return Mapper.toJson(ResponseInfo.create("Account with same id already exists", DUPLICATE_ACCOUNT));
             }catch (MapperException exception){
-                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
+                return Mapper.toJson(ResponseInfo.create("Cannot parse request to JSON", PARSER_ERROR));
             }catch(Exception exception){
                 return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }

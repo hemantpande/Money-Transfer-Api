@@ -24,7 +24,7 @@ public final class Mapper {
         try {
             return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
         } catch (JsonProcessingException e) {
-            String message = "Can't parse to JSON";
+            String message = "Canot parse object to JSON";
             throw new MapperException(PARSER_ERROR, message, e);
         }
     }
