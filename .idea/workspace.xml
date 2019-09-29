@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e726e2e-b56a-4a10-b368-7966354f143f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/simpleMoney/library/Mapper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +203,7 @@
       <workItem from="1569269891503" duration="739000" />
       <workItem from="1569602674897" duration="8507000" />
       <workItem from="1569733857162" duration="7335000" />
-      <workItem from="1569764446356" duration="7868000" />
+      <workItem from="1569764446356" duration="8518000" />
     </task>
     <task id="LOCAL-00003" summary="Readme's, more tests and refactoring">
       <created>1569242103339</created>
@@ -287,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569772668734</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="build batch">
+      <created>1569772848882</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1569772848882</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

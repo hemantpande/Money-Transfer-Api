@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/hemantpande/money-transfer-api.svg?branch=master)](https://travis-ci.org/hemantpande/money-transfer-api)
 
 # Money Transfer Service
 
