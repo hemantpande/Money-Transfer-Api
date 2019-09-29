@@ -2,6 +2,7 @@ package simpleMoney.library;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import simpleMoney.library.exceptions.MapperException;
 
@@ -21,7 +22,7 @@ public final class Mapper {
 
     public static <T> String toJson(T obj) {
         try {
-            return OBJECT_MAPPER.writeValueAsString(obj);
+            return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
         } catch (JsonProcessingException e) {
             String message = "Can't parse to JSON";
             throw new MapperException(PARSER_ERROR, message, e);
@@ -32,7 +33,16 @@ public final class Mapper {
         try {
             return OBJECT_MAPPER.readValue(json, type);
         } catch (IOException e) {
-            String message = "Can't parse from JSON";
+            String message = "Cannot parse request to JSON";
+            throw new MapperException(PARSER_ERROR, message, e);
+        }
+    }
+
+    public static <T> T fromJson(String json, TypeReference<T> typeRef) {
+        try {
+            return OBJECT_MAPPER.readValue(json, typeRef);
+        } catch (IOException e) {
+            String message = "Cannot parse request to JSON";
             throw new MapperException(PARSER_ERROR, message, e);
         }
     }

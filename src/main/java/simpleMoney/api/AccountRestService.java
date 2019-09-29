@@ -2,10 +2,7 @@ package simpleMoney.api;
 
 import lombok.extern.slf4j.Slf4j;
 import simpleMoney.library.*;
-import simpleMoney.library.exceptions.AlreadyExistsException;
-import simpleMoney.library.exceptions.ApiParameterException;
-import simpleMoney.library.exceptions.InsufficientBalanceException;
-import simpleMoney.library.exceptions.NotFoundException;
+import simpleMoney.library.exceptions.*;
 import simpleMoney.models.Account;
 import simpleMoney.models.TransferRequest;
 import simpleMoney.services.AccountService;
@@ -44,6 +41,8 @@ public class AccountRestService extends RestServiceBase {
                 return Mapper.toJson(ResponseInfo.create("Successfully created", SUCCESS));
             }catch (AlreadyExistsException exception){
                 return Mapper.toJson(ResponseInfo.create("Account with same id already exists", DUPLICATE_ACCOUNT));
+            }catch (MapperException exception){
+                return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }catch(Exception exception){
                 return Mapper.toJson(ResponseInfo.create("Bad request", BAD_REQUEST));
             }

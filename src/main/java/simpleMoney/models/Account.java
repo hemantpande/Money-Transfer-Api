@@ -1,6 +1,7 @@
 package simpleMoney.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -18,14 +19,16 @@ public class Account {
     @Getter @Setter
     private String holderName;
 
-    @Setter
+    @Setter @Getter
     private Money balance;
 
+    @JsonIgnore
     public Currencies getBaseCurrency(){
         return balance.getBaseCurrency();
     }
 
-    public double getBalance(){
+    @JsonIgnore
+    public double getAmountBalance(){
         return balance.getAmount();
     }
 
@@ -35,7 +38,7 @@ public class Account {
     }
 
     public void debit(double amount) {
-        final double currentBalance = getBalance();
+        final double currentBalance = getAmountBalance();
         final double debitedBalance = currentBalance - amount;
 
         if(debitedBalance < 0){
@@ -48,7 +51,7 @@ public class Account {
 
     public void credit(double amount, Currencies sourceCurrencyForConversion) {
 
-        final double currentBalance = getBalance();
+        final double currentBalance = getAmountBalance();
         final double rate = balance.getExchangeRate(sourceCurrencyForConversion);
         final double creditedBalance = currentBalance + rate * amount;
 

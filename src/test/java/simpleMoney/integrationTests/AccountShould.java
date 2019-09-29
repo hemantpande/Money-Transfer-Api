@@ -55,8 +55,8 @@ public class AccountShould {
 
         accountService.transfer(request);
 
-        double jackCurrentBalance = accountService.getById(jackAccountId).getBalance();
-        double steveCurrentBalance = accountService.getById(steveAccountId).getBalance();
+        double jackCurrentBalance = accountService.getById(jackAccountId).getAmountBalance();
+        double steveCurrentBalance = accountService.getById(steveAccountId).getAmountBalance();
 
         Assert.assertEquals(400D, jackCurrentBalance,0);
         Assert.assertEquals(100L, steveCurrentBalance,0);
@@ -81,8 +81,8 @@ public class AccountShould {
 
         accountService.transfer(request);
 
-        double jackCurrentBalance = accountService.getById(jackAccountId).getBalance();
-        double hemantCurrentBalance = accountService.getById(hemantAccountId).getBalance();
+        double jackCurrentBalance = accountService.getById(jackAccountId).getAmountBalance();
+        double hemantCurrentBalance = accountService.getById(hemantAccountId).getAmountBalance();
 
         Assert.assertEquals(400D, jackCurrentBalance,0);
         Assert.assertEquals(7103L, hemantCurrentBalance,0);

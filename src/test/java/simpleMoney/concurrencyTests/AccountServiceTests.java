@@ -70,15 +70,15 @@ public class AccountServiceTests {
     }
 
     @Test
-    public void DeadlockTest() {
+    public void DeadlockTestBetweenMutuallyInclusiveAccounts() {
         System.out.println("**This test will check if the application is Thread-safe and deadlock free**");
 
         final long firstAccountId = 1L;
         final long secondAccountId = 2L;
         final long thirdAccountId = 3L;
 
-        Thread firstTransaction = getFirstTransactionThread(firstAccountId, secondAccountId);
-        Thread secondTransaction = getSecondTransactionThread(firstAccountId, thirdAccountId);
+        Thread firstTransaction = getFirstTransactionThreadBetween(firstAccountId, secondAccountId);
+        Thread secondTransaction = getSecondTransactionThreadBetween(firstAccountId, thirdAccountId);
 
         firstTransaction.start();
         secondTransaction.start();
@@ -93,18 +93,73 @@ public class AccountServiceTests {
         assertAccountBalanceFor(firstAccountId, secondAccountId, thirdAccountId);
     }
 
-    private void assertAccountBalanceFor(long firstAccountId, long secondAccountId, long thirdAccountId) {
+    @Test
+    public void DeadlockTestBetweenMutuallyExclusiveAccounts() {
+        System.out.println("**This test will check if the application is Thread-safe and deadlock free**");
+
+        final long firstAccountId = 1L;
+        final long secondAccountId = 2L;
+        final long thirdAccountId = 3L;
+        final long fourthAccountId = 4L;
+
+        Thread firstTransaction = getTransactionThreadBetween(firstAccountId, secondAccountId);
+        Thread secondTransaction = getTransactionThreadBetween(thirdAccountId, fourthAccountId);
+
+        firstTransaction.start();
+        secondTransaction.start();
+
+        sleepForSomeTimeToLetTheThreadsComplete();
+
+        System.out.println("After execution - " + firstTransaction.getName() + " is "
+                + firstTransaction.getState());
+        System.out.println("After execution - " + secondTransaction.getName() + " is "
+                + secondTransaction.getState());
+
         final Account firstAccount = accountService.getById(firstAccountId);
-        Assert.assertEquals(firstAccount.getBalance(), 800L, 0);
+        Assert.assertEquals(firstAccount.getAmountBalance(), 900L, 0);
 
         final Account secondAccount = accountService.getById(secondAccountId);
-        Assert.assertEquals(secondAccount.getBalance(), 1100L, 0);
+        Assert.assertEquals(secondAccount.getAmountBalance(), 1100L, 0);
 
         final Account thirdAccount = accountService.getById(thirdAccountId);
-        Assert.assertEquals(thirdAccount.getBalance(), 1100L, 0);
+        Assert.assertEquals(thirdAccount.getAmountBalance(), 900L, 0);
+
+        final Account fourthAccount = accountService.getById(fourthAccountId);
+        Assert.assertEquals(fourthAccount.getAmountBalance(), 1100L, 0);
     }
 
-    private Thread getSecondTransactionThread(long firstAccountId, long thirdAccountId) {
+    private Thread getTransactionThreadBetween(long to, long from) {
+        return new Thread(() -> {
+            final long begin = System.nanoTime();
+            createAccountWith(to);
+            createAccountWith(from);
+
+            final TransferRequest request = getTransferRequestFor(to, from);
+            System.out.println("Thread name with " + Thread.currentThread().getName() + " is in "
+                    + Thread.currentThread().getState() + " state.");
+
+            System.out.println(String.format("Transfer request received from account %s to %s",
+                    request.getFromId(), request.getToId()));
+            accountService.transfer(request);
+
+            System.out.println("Exiting from 1st transaction in "
+                    + TimeUnit.MILLISECONDS.convert(System.nanoTime() - begin, TimeUnit.NANOSECONDS)
+                    + " milliseconds");
+        });
+    }
+
+    private void assertAccountBalanceFor(long firstAccountId, long secondAccountId, long thirdAccountId) {
+        final Account firstAccount = accountService.getById(firstAccountId);
+        Assert.assertEquals(firstAccount.getAmountBalance(), 800L, 0);
+
+        final Account secondAccount = accountService.getById(secondAccountId);
+        Assert.assertEquals(secondAccount.getAmountBalance(), 1100L, 0);
+
+        final Account thirdAccount = accountService.getById(thirdAccountId);
+        Assert.assertEquals(thirdAccount.getAmountBalance(), 1100L, 0);
+    }
+
+    private Thread getSecondTransactionThreadBetween(long firstAccountId, long thirdAccountId) {
         return new Thread(() -> {
                 final long begin = System.nanoTime();
                 createAccountWith(thirdAccountId);
@@ -123,7 +178,7 @@ public class AccountServiceTests {
             });
     }
 
-    private Thread getFirstTransactionThread(long firstAccountId, long secondAccountId) {
+    private Thread getFirstTransactionThreadBetween(long firstAccountId, long secondAccountId) {
         return new Thread(() -> {
                 final long begin = System.nanoTime();
                 createAccountWith(firstAccountId);
